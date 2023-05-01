@@ -20,3 +20,22 @@ class NotesApp:
                     self.notes.append(note)
         except:
             pass
+
+    def create_note(self):
+        id = len(self.notes) + 1
+        title = input('Enter note title: ')
+        body = input('Enter note body: ')
+        created_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        updated_at = created_at
+        note = Note(id, title, body, created_at, updated_at)
+        self.notes.append(note)
+        self.save_notes()
+
+    def read_notes(self):
+        for note in self.notes:
+            print('ID:', note.id)
+            print('Title:', note.title)
+            print('Body:', note.body)
+            print('Created at:', note.created_at)
+            print('Updated at:', note.updated_at)
+            print()
